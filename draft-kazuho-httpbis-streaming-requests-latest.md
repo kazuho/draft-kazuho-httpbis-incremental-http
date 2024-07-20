@@ -61,6 +61,25 @@ request downstream before receiving the complete request.
 {::boilerplate bcp14-tagged}
 
 
+# The Request-Streaming Header Field
+
+The Request-Streaming request header field indicates clients' desire that
+intermediaries start forwarding the HTTP request downstream before receiving the
+entire request.
+
+It has just one valid value: "1". Its syntax is defined by the following ABNF
+{{!ABNF=RFC5234}}:
+
+~~~
+Request-Streaming = 1
+~~~
+
+When receiving requests with the Request-Streaming request header field,
+intermediaries SHOULD NOT attempt to buffer the entire request before forwarding
+the request. Rather, the intermediaries SHOULD forward chunks of the request
+body to downstream servers as they are received.
+
+
 # Security Considerations
 
 TODO Security
