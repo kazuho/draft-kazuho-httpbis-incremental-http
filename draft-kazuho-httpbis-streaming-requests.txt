@@ -66,6 +66,7 @@ Table of Contents
    2.  Conventions and Definitions
    3.  The Request-Streaming Header Field
    4.  Security Considerations
+     4.1.  Applying Concurrency Limits
    5.  IANA Considerations
    6.  References
      6.1.  Normative References
@@ -134,7 +135,19 @@ Table of Contents
 
 4.  Security Considerations
 
-   TBD
+4.1.  Applying Concurrency Limits
+
+   To conserve resources required to handle HTTP requests or
+   connections, it is common for intermediaries to impose limits on the
+   maximum number of concurrent HTTP requests, while buffering requests
+   that exceed this limit.
+
+   Intermediaries may apply a more restrictive concurrency limit to
+   streaming requests to ensure that there remains capacity to process
+   non-streaming requests, even when the maximum number of long-lived
+   streaming requests is reached.  This approach helps balance the
+   processing of different types of requests and maintains service
+   availability across all request types.
 
 5.  IANA Considerations
 
