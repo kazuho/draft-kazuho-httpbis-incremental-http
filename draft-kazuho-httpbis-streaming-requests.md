@@ -43,18 +43,17 @@ complete HTTP requests before forwarding them to the backend server.
 
 Should such a buffering HTTP intermediary be present between the client and the
 server, the application in question fails to function as intended. Upon sending
-the initial message, the client awaits a response while keeping the request
-channel open for subsequent messages. Concurrently, the intermediary delays
-forwarding until the full request is received. This misalignment leads to a
-deadlock that prevents the exchange of application-defined messages, effectively
-disrupting the intended bi-directional communication.
+the HTTP header section and the initial application message, the client awaits a
+response while keeping the HTTP request open for subsequent application
+messages. Concurrently, the intermediary delays forwarding until the HTTP
+request is fully received. This misalignment leads to a deadlock that prevents
+the exchange of application-defined messages, effectively disrupting the
+intended bi-directional communication.
 
 
 To prevent such deadlocks, this document specifies the "Request-Streaming" HTTP
-request header field.
-
-This HTTP field instructs HTTP intermediarires to start forwarding the HTTP
-request downstream before receiving the complete request.
+request header field, that instructs HTTP intermediaries to begin forwarding the
+HTTP request downstream before receiving the complete request.
 
 
 # Conventions and Definitions
