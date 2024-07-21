@@ -87,7 +87,29 @@ clients as they are received.
 
 # Security Considerations
 
-TBD
+## Applying Concurrency Limits
+
+To conserve resources required to handle HTTP requests or connections, it is
+common for intermediaries to impose limits on the maximum number of concurrent
+HTTP requests that they forward, while buffering requests that exceed this
+limit.
+
+Intermediaries may apply a more restrictive concurrency limit to streaming
+requests to ensure that there remains capacity to process non-streaming
+requests, even when the maximum number of long-lived streaming requests is
+reached. This approach helps balance the processing of different types of
+requests and maintains service availability across all request types.
+
+
+## Rejecting Streaming Requests
+
+Some intermediaries buffer the entire HTTP request or response body to inspect
+the payload as a whole. If these intermediaries cannot tolerate streaming
+requests as indicated by the Request-Streaming request header field, they SHOULD
+reject these streaming requests with a 403 Forbidden response
+({{Section 15.5.4 of HTTP}}). Rejecting these requests explicitly is preferable
+to buffering the HTTP body in hopes that it will eventually be closed by the
+sender.
 
 
 # IANA Considerations
