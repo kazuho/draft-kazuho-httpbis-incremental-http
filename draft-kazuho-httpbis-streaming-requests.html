@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
-<title>Streaming Reqeuests for HTTP</title>
+<title>Streaming Requests for HTTP</title>
 <meta content="Kazuho Oku" name="author">
 <meta content='
        This document specifies the "Request-Streaming" HTTP request header field, which
-instructs HTTP intermediaries to begin forwarding the request to downstream
-servers before the request body has been received completely. 
+instructs HTTP intermediaries to begin forwarding the request and the
+corresponding response before the HTTP message body is received completely. 
     ' name="description">
 <meta content="xml2rfc 3.22.0" name="generator">
 <meta content="internet-draft" name="keyword">
@@ -1025,7 +1025,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <table class="ears">
 <thead><tr>
 <td class="left">Internet-Draft</td>
-<td class="center">Streaming Reqeuests for HTTP</td>
+<td class="center">Streaming Requests for HTTP</td>
 <td class="right">July 2024</td>
 </tr></thead>
 <tfoot><tr>
@@ -1058,12 +1058,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </dd>
 </dl>
 </div>
-<h1 id="title">Streaming Reqeuests for HTTP</h1>
+<h1 id="title">Streaming Requests for HTTP</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
 <p id="section-abstract-1">This document specifies the "Request-Streaming" HTTP request header field, which
-instructs HTTP intermediaries to begin forwarding the request to downstream
-servers before the request body has been received completely.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+instructs HTTP intermediaries to begin forwarding the request and the
+corresponding response before the HTTP message body is received completely.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-discussion-venues">
@@ -1165,16 +1165,17 @@ servers before the request body has been received completely.<a href="#section-a
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">HTTP is a request-response protocol that allows servers to start transmitting a
-response before the entire HTTP request has been received. Some applications,
-such as Chunked Oblivious HTTP Messages
+<p id="section-1-1">HTTP <span>[<a href="#HTTP" class="cite xref">HTTP</a>]</span> is a request-response protocol that allows servers to
+start transmitting a response before the entire HTTP request has been received.
+Some applications, such as Chunked Oblivious HTTP Messages
 <span>[<a href="#CHUNKED-OHTTP" class="cite xref">CHUNKED-OHTTP</a>]</span>, exploit this capability to turn
 a single HTTP request-response pair into a medium for bi-directional
-communication, on which multiple application-defined
-request-response message pairs are exchanged.<a href="#section-1-1" class="pilcrow">¶</a></p>
+communication, on which multiple application-defined request-response message
+pairs are exchanged.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">However, this approach is fragile when HTTP intermediaries are involved. HTTP
 intermediaries are not only allowed but are frequently deployed to buffer
-complete HTTP requests before forwarding them to the backend server.<a href="#section-1-2" class="pilcrow">¶</a></p>
+complete HTTP requests before forwarding them to the backend server
+(<span><a href="https://rfc-editor.org/rfc/rfc9110#section-7.6" class="relref">Section 7.6</a> of [<a href="#HTTP" class="cite xref">HTTP</a>]</span>).<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">Should such a buffering HTTP intermediary be present between the client and the
 server, the application in question fails to function as intended. Upon sending
 the HTTP header section and the initial application message, the client awaits a
@@ -1228,7 +1229,7 @@ clients as they are received.<a href="#section-3-5" class="pilcrow">¶</a></p>
       <h2 id="name-security-considerations">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-4-1">TODO Security<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-1">TBD<a href="#section-4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
@@ -1236,7 +1237,7 @@ clients as they are received.<a href="#section-3-5" class="pilcrow">¶</a></p>
       <h2 id="name-iana-considerations">
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-5-1">This document has no IANA actions.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-1">TBD<a href="#section-5-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-combined-references">
@@ -1253,6 +1254,10 @@ clients as they are received.<a href="#section-3-5" class="pilcrow">¶</a></p>
 <dt id="ABNF">[ABNF]</dt>
         <dd>
 <span class="refAuthor">Crocker, D., Ed.</span> and <span class="refAuthor">P. Overell</span>, <span class="refTitle">"Augmented BNF for Syntax Specifications: ABNF"</span>, <span class="seriesInfo">STD 68</span>, <span class="seriesInfo">RFC 5234</span>, <span class="seriesInfo">DOI 10.17487/RFC5234</span>, <time datetime="2008-01" class="refDate">January 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5234">https://www.rfc-editor.org/rfc/rfc5234</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="HTTP">[HTTP]</dt>
+        <dd>
+<span class="refAuthor">Fielding, R., Ed.</span>, <span class="refAuthor">Nottingham, M., Ed.</span>, and <span class="refAuthor">J. Reschke, Ed.</span>, <span class="refTitle">"HTTP Semantics"</span>, <span class="seriesInfo">STD 97</span>, <span class="seriesInfo">RFC 9110</span>, <span class="seriesInfo">DOI 10.17487/RFC9110</span>, <time datetime="2022-06" class="refDate">June 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9110">https://www.rfc-editor.org/rfc/rfc9110</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>

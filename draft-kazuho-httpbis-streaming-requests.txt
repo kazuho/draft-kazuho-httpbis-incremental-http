@@ -8,15 +8,15 @@ Intended status: Standards Track                            21 July 2024
 Expires: 22 January 2025
 
 
-                      Streaming Reqeuests for HTTP
+                      Streaming Requests for HTTP
              draft-kazuho-httpbis-streaming-requests-latest
 
 Abstract
 
    This document specifies the "Request-Streaming" HTTP request header
    field, which instructs HTTP intermediaries to begin forwarding the
-   request to downstream servers before the request body has been
-   received completely.
+   request and the corresponding response before the HTTP message body
+   is received completely.
 
 Discussion Venues
 
@@ -75,8 +75,8 @@ Table of Contents
 
 1.  Introduction
 
-   HTTP is a request-response protocol that allows servers to start
-   transmitting a response before the entire HTTP request has been
+   HTTP [HTTP] is a request-response protocol that allows servers to
+   start transmitting a response before the entire HTTP request has been
    received.  Some applications, such as Chunked Oblivious HTTP Messages
    [CHUNKED-OHTTP], exploit this capability to turn a single HTTP
    request-response pair into a medium for bi-directional communication,
@@ -86,7 +86,7 @@ Table of Contents
    However, this approach is fragile when HTTP intermediaries are
    involved.  HTTP intermediaries are not only allowed but are
    frequently deployed to buffer complete HTTP requests before
-   forwarding them to the backend server.
+   forwarding them to the backend server (Section 7.6 of [HTTP]).
 
    Should such a buffering HTTP intermediary be present between the
    client and the server, the application in question fails to function
@@ -134,11 +134,11 @@ Table of Contents
 
 4.  Security Considerations
 
-   TODO Security
+   TBD
 
 5.  IANA Considerations
 
-   This document has no IANA actions.
+   TBD
 
 6.  References
 
@@ -148,6 +148,11 @@ Table of Contents
               Specifications: ABNF", STD 68, RFC 5234,
               DOI 10.17487/RFC5234, January 2008,
               <https://www.rfc-editor.org/rfc/rfc5234>.
+
+   [HTTP]     Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
+              Ed., "HTTP Semantics", STD 97, RFC 9110,
+              DOI 10.17487/RFC9110, June 2022,
+              <https://www.rfc-editor.org/rfc/rfc9110>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
