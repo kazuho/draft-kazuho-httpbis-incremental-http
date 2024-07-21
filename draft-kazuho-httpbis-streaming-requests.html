@@ -1244,7 +1244,8 @@ clients as they are received.<a href="#section-3-5" class="pilcrow">¶</a></p>
         </h3>
 <p id="section-4.1-1">To conserve resources required to handle HTTP requests or connections, it is
 common for intermediaries to impose limits on the maximum number of concurrent
-HTTP requests, while buffering requests that exceed this limit.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+HTTP requests that they forward, while buffering requests that exceed this
+limit.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
 <p id="section-4.1-2">Intermediaries may apply a more restrictive concurrency limit to streaming
 requests to ensure that there remains capacity to process non-streaming
 requests, even when the maximum number of long-lived streaming requests is

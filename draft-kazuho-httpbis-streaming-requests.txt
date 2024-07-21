@@ -140,8 +140,8 @@ Table of Contents
 
    To conserve resources required to handle HTTP requests or
    connections, it is common for intermediaries to impose limits on the
-   maximum number of concurrent HTTP requests, while buffering requests
-   that exceed this limit.
+   maximum number of concurrent HTTP requests that they forward, while
+   buffering requests that exceed this limit.
 
    Intermediaries may apply a more restrictive concurrency limit to
    streaming requests to ensure that there remains capacity to process
