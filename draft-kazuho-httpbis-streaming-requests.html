@@ -1139,6 +1139,9 @@ corresponding response before the HTTP message body is received completely.<a hr
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-applying-concurrency-limits" class="internal xref">Applying Concurrency Limits</a></p>
 </li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-rejecting-streaming-request" class="internal xref">Rejecting Streaming Requests</a></p>
+</li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
@@ -1247,6 +1250,20 @@ requests to ensure that there remains capacity to process non-streaming
 requests, even when the maximum number of long-lived streaming requests is
 reached. This approach helps balance the processing of different types of
 requests and maintains service availability across all request types.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="rejecting-streaming-requests">
+<section id="section-4.2">
+        <h3 id="name-rejecting-streaming-request">
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-rejecting-streaming-request" class="section-name selfRef">Rejecting Streaming Requests</a>
+        </h3>
+<p id="section-4.2-1">Some intermediaries buffer the entire HTTP request or response body to inspect
+the payload as a whole. If these intermediaries cannot tolerate streaming
+requests as indicated by the Request-Streaming request header field, they <span class="bcp14">SHOULD</span>
+reject these streaming requests with a 403 Forbidden response
+(<span><a href="https://rfc-editor.org/rfc/rfc9110#section-15.5.4" class="relref">Section 15.5.4</a> of [<a href="#HTTP" class="cite xref">HTTP</a>]</span>). Rejecting these requests explicitly is preferable
+to buffering the HTTP body in hopes that it will eventually be closed by the
+sender.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>

@@ -67,6 +67,7 @@ Table of Contents
    3.  The Request-Streaming Header Field
    4.  Security Considerations
      4.1.  Applying Concurrency Limits
+     4.2.  Rejecting Streaming Requests
    5.  IANA Considerations
    6.  References
      6.1.  Normative References
@@ -148,6 +149,16 @@ Table of Contents
    streaming requests is reached.  This approach helps balance the
    processing of different types of requests and maintains service
    availability across all request types.
+
+4.2.  Rejecting Streaming Requests
+
+   Some intermediaries buffer the entire HTTP request or response body
+   to inspect the payload as a whole.  If these intermediaries cannot
+   tolerate streaming requests as indicated by the Request-Streaming
+   request header field, they SHOULD reject these streaming requests
+   with a 403 Forbidden response (Section 15.5.4 of [HTTP]).  Rejecting
+   these requests explicitly is preferable to buffering the HTTP body in
+   hopes that it will eventually be closed by the sender.
 
 5.  IANA Considerations
 
