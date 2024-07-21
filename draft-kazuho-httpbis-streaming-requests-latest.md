@@ -19,9 +19,9 @@ informative:
 
 --- abstract
 
-This document specifies the "Request-Streaming" HTTP request header field, that
-instructs HTTP intermediaries to start forwarding the request to downstream
-before receiving a compelete request.
+This document specifies the "Request-Streaming" HTTP request header field, which
+instructs HTTP intermediaries to begin forwarding the request to downstream
+servers before the request body has been received completely.
 
 
 --- middle
