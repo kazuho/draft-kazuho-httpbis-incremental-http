@@ -87,13 +87,12 @@ clients as they are received.
 
 # Security Considerations
 
-TODO Security
+TBD
 
 
 # IANA Considerations
 
-This document has no IANA actions.
-
+TBD
 
 --- back
 
