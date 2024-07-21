@@ -29,17 +29,18 @@ corresponding response before the HTTP message body is received completely.
 
 # Introduction
 
-HTTP is a request-response protocol that allows servers to start transmitting a
-response before the entire HTTP request has been received. Some applications,
-such as Chunked Oblivious HTTP Messages
+HTTP {{!HTTP=RFC9110}} is a request-response protocol that allows servers to
+start transmitting a response before the entire HTTP request has been received.
+Some applications, such as Chunked Oblivious HTTP Messages
 {{?CHUNKED-OHTTP=I-D.ietf-ohai-chunked-ohttp}}, exploit this capability to turn
 a single HTTP request-response pair into a medium for bi-directional
-communication, on which multiple application-defined
-request-response message pairs are exchanged.
+communication, on which multiple application-defined request-response message
+pairs are exchanged.
 
 However, this approach is fragile when HTTP intermediaries are involved. HTTP
 intermediaries are not only allowed but are frequently deployed to buffer
-complete HTTP requests before forwarding them to the backend server.
+complete HTTP requests before forwarding them to the backend server
+({{Section 7.6 of HTTP}}).
 
 Should such a buffering HTTP intermediary be present between the client and the
 server, the application in question fails to function as intended. Upon sending
