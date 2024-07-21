@@ -1,5 +1,6 @@
 ---
 title: "Streaming Reqeuests for HTTP"
+docname: draft-kazuho-httpbis-streaming-requests-latest
 category: std
 wg: httpbis
 ipr: trust200902
