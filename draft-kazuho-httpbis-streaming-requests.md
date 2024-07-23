@@ -16,6 +16,7 @@ author:
 normative:
 
 informative:
+  PROXY-STATUS: RFC9209
 
 
 --- abstract
@@ -98,6 +99,11 @@ requests to ensure that there remains capacity to process non-streaming
 requests, even when the maximum number of long-lived streaming requests is
 reached. This approach helps balance the processing of different types of
 requests and maintains service availability across all request types.
+
+When rejecting streaming requests due to reaching the concurrency limit,
+intermediaries SHOULD respond with a 503 Service Unavailable error, accompanied
+with a connection_limit_reached Proxy-Status response header field
+({{Section 2.3.12 of PROXY-STATUS}}).
 
 
 ## Rejecting Streaming Requests
