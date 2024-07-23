@@ -51,7 +51,6 @@ request is fully received. This misalignment leads to a deadlock that prevents
 the exchange of application-defined messages, effectively disrupting the
 intended bi-directional communication.
 
-
 To prevent such deadlocks, this document specifies the "Request-Streaming" HTTP
 request header field, that instructs HTTP intermediaries to begin forwarding the
 HTTP request downstream before receiving the complete request.
@@ -94,7 +93,7 @@ common for intermediaries to impose limits on the maximum number of concurrent
 HTTP requests that they forward, while buffering requests that exceed this
 limit.
 
-Intermediaries may apply a more restrictive concurrency limit to streaming
+Such intermediaries may apply a more restrictive concurrency limit to streaming
 requests to ensure that there remains capacity to process non-streaming
 requests, even when the maximum number of long-lived streaming requests is
 reached. This approach helps balance the processing of different types of
