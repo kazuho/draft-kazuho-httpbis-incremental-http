@@ -1,5 +1,5 @@
 ---
-title: "Streaming Requests for HTTP"
+title: "Streaming Requests on HTTP"
 docname: draft-kazuho-httpbis-streaming-requests-latest
 category: std
 wg: httpbis
