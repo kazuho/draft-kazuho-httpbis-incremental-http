@@ -4,8 +4,8 @@
 
 httpbis                                                           K. Oku
 Internet-Draft                                                    Fastly
-Intended status: Standards Track                            21 July 2024
-Expires: 22 January 2025
+Intended status: Standards Track                            23 July 2024
+Expires: 24 January 2025
 
 
                       Streaming Requests for HTTP
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 January 2025.
+   This Internet-Draft will expire on 24 January 2025.
 
 Copyright Notice
 
@@ -143,7 +143,7 @@ Table of Contents
    maximum number of concurrent HTTP requests that they forward, while
    buffering requests that exceed this limit.
 
-   Intermediaries may apply a more restrictive concurrency limit to
+   Such intermediaries may apply a more restrictive concurrency limit to
    streaming requests to ensure that there remains capacity to process
    non-streaming requests, even when the maximum number of long-lived
    streaming requests is reached.  This approach helps balance the
