@@ -1,6 +1,6 @@
-# Streaming Reqeuests for HTTP
+# Streaming Requests on HTTP
 
-This is the working area for the individual Internet-Draft, "Streaming Reqeuests for HTTP".
+This is the working area for the individual Internet-Draft, "Streaming Requests on HTTP".
 
 * [Editor's Copy](https://kazuho.github.io/draft-kazuho-httpbis-streaming-requests/#go.draft-kazuho-httpbis-streaming-requests.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-kazuho-httpbis-streaming-requests)
