@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-23T00:18:00.786484+00:00",
+  "timestamp": "2024-07-25T00:17:57.455483+00:00",
   "repo": "kazuho/draft-kazuho-httpbis-streaming-requests",
   "labels": [
     {
@@ -49,6 +49,47 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOMZBL0M6Qmq8z",
+      "title": "Structured Fields",
+      "url": "https://github.com/kazuho/draft-kazuho-httpbis-streaming-requests/issues/1",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "This changes this to `?1` from `1`.  It might make things neater.",
+      "createdAt": "2024-07-23T20:19:55Z",
+      "updatedAt": "2024-07-23T20:19:55Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 2,
+      "id": "I_kwDOMZBL0M6Qmt3p",
+      "title": "Field name ... or maybe just semantics too",
+      "url": "https://github.com/kazuho/draft-kazuho-httpbis-streaming-requests/issues/2",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "A name of \"request-streaming\" implies that this only applies to requests.  That's not really necessary.  I think that it would be helpful to have this be more general.  This can be a per-message basis.\r\n\r\nI would suggest \"Stream-Body\" or \"Incr[emental]-Delivery\" or even just \"Incremental\".  This is a signal from the sender of that message to any intermediary that incremental delivery of this message would be optimal.  Importantly, a request can't speak about a response.",
+      "createdAt": "2024-07-23T20:26:44Z",
+      "updatedAt": "2024-07-23T20:28:27Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "martinthomson",
+          "authorAssociation": "NONE",
+          "body": "Or \"Incr[emental]-Forwarding\" or \"Forward-Incr\" so that it is about *forwarding* expectations.",
+          "createdAt": "2024-07-23T20:28:26Z",
+          "updatedAt": "2024-07-23T20:28:26Z"
+        }
+      ]
+    }
+  ],
   "pulls": []
 }
