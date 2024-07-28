@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-25T00:17:57.455483+00:00",
+  "timestamp": "2024-07-28T00:20:14.985962+00:00",
   "repo": "kazuho/draft-kazuho-httpbis-streaming-requests",
   "labels": [
     {
@@ -62,9 +62,17 @@
       "labels": [],
       "body": "This changes this to `?1` from `1`.  It might make things neater.",
       "createdAt": "2024-07-23T20:19:55Z",
-      "updatedAt": "2024-07-23T20:19:55Z",
+      "updatedAt": "2024-07-26T01:42:08Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "kazuho",
+          "authorAssociation": "OWNER",
+          "body": "I agree that we should be using Structured Fields in new I-Ds, even when the header value is not used in any particular way.",
+          "createdAt": "2024-07-26T01:42:06Z",
+          "updatedAt": "2024-07-26T01:42:06Z"
+        }
+      ]
     },
     {
       "number": 2,
@@ -78,7 +86,7 @@
       "labels": [],
       "body": "A name of \"request-streaming\" implies that this only applies to requests.  That's not really necessary.  I think that it would be helpful to have this be more general.  This can be a per-message basis.\r\n\r\nI would suggest \"Stream-Body\" or \"Incr[emental]-Delivery\" or even just \"Incremental\".  This is a signal from the sender of that message to any intermediary that incremental delivery of this message would be optimal.  Importantly, a request can't speak about a response.",
       "createdAt": "2024-07-23T20:26:44Z",
-      "updatedAt": "2024-07-23T20:28:27Z",
+      "updatedAt": "2024-07-26T02:55:19Z",
       "closedAt": null,
       "comments": [
         {
@@ -87,9 +95,43 @@
           "body": "Or \"Incr[emental]-Forwarding\" or \"Forward-Incr\" so that it is about *forwarding* expectations.",
           "createdAt": "2024-07-23T20:28:26Z",
           "updatedAt": "2024-07-23T20:28:26Z"
+        },
+        {
+          "author": "kazuho",
+          "authorAssociation": "OWNER",
+          "body": "Thank you for starting the discussion.\r\n\r\n> A name of \"request-streaming\" implies that this only applies to requests. \r\n\r\nThis I agree with. To fix the issue, I think it might be a good idea to include the term \"bidirectional,\" due to the following reasons:\r\n* I think people think that HTTP response is streamed (because browsers render incrementally!).\r\n* The only case that we have this problem is when applications want streaming in both directions - blocking intermediaries work perfectly fine if only the request (or the response) is streamed.\r\n\r\nSeparately, I think we'd prefer having a name that adequately acquires the attention of HTTP application developers when they:\r\n* try to create applications that do bi-directional streaming, or\r\n* when they hit issues by doing that.\r\n\r\nDue to the first bullet point, I'm somewhat negative to having something like \"Forwarding\" in the title, even though such title might be technically correct.\r\n\r\nI think we want the streaming header to be set by any application that needs bi-directional streaming, regardless of intermediaries being involved in their deployments. That is because we do not want to see those applications break when they add buffering intermediaries.\r\n\r\nTo paraphrase, setting the streaming header always would be the way to adhere to the HTTP semantics for those applications.\r\n\r\nSo, I think my preference goes to something like \"Bidirectional Streaming of HTTP Bodies\". WDYT?",
+          "createdAt": "2024-07-26T02:55:18Z",
+          "updatedAt": "2024-07-26T02:55:18Z"
         }
       ]
     }
   ],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 3,
+      "id": "PR_kwDOMZBL0M52hyYe",
+      "title": "switch to Structured Fields",
+      "url": "https://github.com/kazuho/draft-kazuho-httpbis-streaming-requests/pull/3",
+      "state": "OPEN",
+      "author": "kazuho",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "As suggested by @martinthomson in #1.",
+      "createdAt": "2024-07-26T01:40:44Z",
+      "updatedAt": "2024-07-26T01:40:44Z",
+      "baseRepository": "kazuho/draft-kazuho-httpbis-streaming-requests",
+      "baseRefName": "main",
+      "baseRefOid": "bf77dc3e7113abb85df5ac0e72311b622ee3aaee",
+      "headRepository": "kazuho/draft-kazuho-httpbis-streaming-requests",
+      "headRefName": "kazuho/structured-fields",
+      "headRefOid": "0adb009ad757423e60c5a472aa363418f772c4eb",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    }
+  ]
 }
