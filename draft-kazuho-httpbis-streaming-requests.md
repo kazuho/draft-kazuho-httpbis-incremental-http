@@ -61,6 +61,8 @@ HTTP request downstream before receiving the complete request.
 
 {::boilerplate bcp14-tagged}
 
+The term Boolean is imported from {{!STRUCTURED-FIELDS=RFC8941}}.
+
 
 # The Request-Streaming Header Field
 
@@ -68,11 +70,10 @@ The Request-Streaming request header field expresses the client's intent for
 HTTP intermediaries to start forwarding the request to downstream servers before
 the entire request is received.
 
-This header field has just one valid value: "1". Its syntax is defined by the
-following ABNF {{!ABNF=RFC5234}}:
+This header field has just one valid value of type Boolean: "?1".
 
 ~~~
-Request-Streaming = 1
+Request-Streaming = ?1
 ~~~
 
 Upon receiving a header section that includes the Request-Streaming header
