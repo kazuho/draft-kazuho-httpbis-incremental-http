@@ -4,8 +4,8 @@
 
 httpbis                                                           K. Oku
 Internet-Draft                                                    Fastly
-Intended status: Standards Track                            23 July 2024
-Expires: 24 January 2025
+Intended status: Standards Track                            29 July 2024
+Expires: 30 January 2025
 
 
                        Streaming Requests on HTTP
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 January 2025.
+   This Internet-Draft will expire on 30 January 2025.
 
 Copyright Notice
 
@@ -113,16 +113,17 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
+   The term Boolean is imported from [STRUCTURED-FIELDS].
+
 3.  The Request-Streaming Header Field
 
    The Request-Streaming request header field expresses the client's
    intent for HTTP intermediaries to start forwarding the request to
    downstream servers before the entire request is received.
 
-   This header field has just one valid value: "1".  Its syntax is
-   defined by the following ABNF [ABNF]:
+   This header field has just one valid value of type Boolean: "?1".
 
-   Request-Streaming = 1
+   Request-Streaming = ?1
 
    Upon receiving a header section that includes the Request-Streaming
    header field, HTTP intermediaries SHOULD NOT buffer the entire
@@ -173,11 +174,6 @@ Table of Contents
 
 6.1.  Normative References
 
-   [ABNF]     Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
-              Specifications: ABNF", STD 68, RFC 5234,
-              DOI 10.17487/RFC5234, January 2008,
-              <https://www.rfc-editor.org/rfc/rfc5234>.
-
    [HTTP]     Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "HTTP Semantics", STD 97, RFC 9110,
               DOI 10.17487/RFC9110, June 2022,
@@ -191,6 +187,11 @@ Table of Contents
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+   [STRUCTURED-FIELDS]
+              Nottingham, M. and P. Kamp, "Structured Field Values for
+              HTTP", RFC 8941, DOI 10.17487/RFC8941, February 2021,
+              <https://www.rfc-editor.org/rfc/rfc8941>.
 
 6.2.  Informative References
 
