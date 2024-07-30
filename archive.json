@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-28T00:20:14.985962+00:00",
+  "timestamp": "2024-07-30T00:18:14.488245+00:00",
   "repo": "kazuho/draft-kazuho-httpbis-streaming-requests",
   "labels": [
     {
@@ -55,15 +55,15 @@
       "id": "I_kwDOMZBL0M6Qmq8z",
       "title": "Structured Fields",
       "url": "https://github.com/kazuho/draft-kazuho-httpbis-streaming-requests/issues/1",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "martinthomson",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "This changes this to `?1` from `1`.  It might make things neater.",
       "createdAt": "2024-07-23T20:19:55Z",
-      "updatedAt": "2024-07-26T01:42:08Z",
-      "closedAt": null,
+      "updatedAt": "2024-07-29T02:43:38Z",
+      "closedAt": "2024-07-29T02:43:38Z",
       "comments": [
         {
           "author": "kazuho",
@@ -112,24 +112,26 @@
       "id": "PR_kwDOMZBL0M52hyYe",
       "title": "switch to Structured Fields",
       "url": "https://github.com/kazuho/draft-kazuho-httpbis-streaming-requests/pull/3",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "kazuho",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "As suggested by @martinthomson in #1.",
       "createdAt": "2024-07-26T01:40:44Z",
-      "updatedAt": "2024-07-26T01:40:44Z",
+      "updatedAt": "2024-07-29T02:43:32Z",
       "baseRepository": "kazuho/draft-kazuho-httpbis-streaming-requests",
       "baseRefName": "main",
       "baseRefOid": "bf77dc3e7113abb85df5ac0e72311b622ee3aaee",
       "headRepository": "kazuho/draft-kazuho-httpbis-streaming-requests",
       "headRefName": "kazuho/structured-fields",
       "headRefOid": "0adb009ad757423e60c5a472aa363418f772c4eb",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-07-29T02:43:32Z",
+      "mergedAt": "2024-07-29T02:43:32Z",
+      "mergedBy": "kazuho",
+      "mergeCommit": {
+        "oid": "af2ae1b20ffd8ed9db1f0d3f50da57efacc9ec31"
+      },
       "comments": [],
       "reviews": []
     }
