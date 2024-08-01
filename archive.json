@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-30T00:18:14.488245+00:00",
+  "timestamp": "2024-08-01T00:20:32.402902+00:00",
   "repo": "kazuho/draft-kazuho-httpbis-streaming-requests",
   "labels": [
     {
@@ -86,7 +86,7 @@
       "labels": [],
       "body": "A name of \"request-streaming\" implies that this only applies to requests.  That's not really necessary.  I think that it would be helpful to have this be more general.  This can be a per-message basis.\r\n\r\nI would suggest \"Stream-Body\" or \"Incr[emental]-Delivery\" or even just \"Incremental\".  This is a signal from the sender of that message to any intermediary that incremental delivery of this message would be optimal.  Importantly, a request can't speak about a response.",
       "createdAt": "2024-07-23T20:26:44Z",
-      "updatedAt": "2024-07-26T02:55:19Z",
+      "updatedAt": "2024-07-31T05:18:39Z",
       "closedAt": null,
       "comments": [
         {
@@ -102,6 +102,20 @@
           "body": "Thank you for starting the discussion.\r\n\r\n> A name of \"request-streaming\" implies that this only applies to requests. \r\n\r\nThis I agree with. To fix the issue, I think it might be a good idea to include the term \"bidirectional,\" due to the following reasons:\r\n* I think people think that HTTP response is streamed (because browsers render incrementally!).\r\n* The only case that we have this problem is when applications want streaming in both directions - blocking intermediaries work perfectly fine if only the request (or the response) is streamed.\r\n\r\nSeparately, I think we'd prefer having a name that adequately acquires the attention of HTTP application developers when they:\r\n* try to create applications that do bi-directional streaming, or\r\n* when they hit issues by doing that.\r\n\r\nDue to the first bullet point, I'm somewhat negative to having something like \"Forwarding\" in the title, even though such title might be technically correct.\r\n\r\nI think we want the streaming header to be set by any application that needs bi-directional streaming, regardless of intermediaries being involved in their deployments. That is because we do not want to see those applications break when they add buffering intermediaries.\r\n\r\nTo paraphrase, setting the streaming header always would be the way to adhere to the HTTP semantics for those applications.\r\n\r\nSo, I think my preference goes to something like \"Bidirectional Streaming of HTTP Bodies\". WDYT?",
           "createdAt": "2024-07-26T02:55:18Z",
           "updatedAt": "2024-07-26T02:55:18Z"
+        },
+        {
+          "author": "martinthomson",
+          "authorAssociation": "NONE",
+          "body": "So I don't think that bidirectional is the important property.  After all, if the request is buffered and the response is not, you don't have full duplex (or bidirectional) communication.  That is something you might get with [server sent events](https://html.spec.whatwg.org/multipage/server-sent-events.html), which this would make far more reliable overall (if intermediaries supported the signaling, that is, independent of any preexisting arrangements that have been setup, which I know is common for existing uses of SSE).\r\n\r\nThe key property is that data is forwarded as it arrives at an intermediary, not buffered.  `Unbuffered` might be a negative framing of this that works (even if I don't ordinarily like using negative names).\r\n\r\nThe fact that two unbuffered messages can be assembled to form voltron^wa bidirectional protocol is interesting, but not an essential property.\r\n\r\nI also don't think that you can assume that an unbuffered request naturally leads to an unbuffered response.  It could in a great many cases (100-continue is a good example of that, especially with OHTTP).  But not all.  Incremental processing is often valuable for large bodies, such that buffering is a performance hazard.\r\n\r\nSo, for me at least, bidirectional communication should feature prominently in the rationale, but it should not be how the feature is defined.  It should just be a consequence of one of the ways that the feature is used.",
+          "createdAt": "2024-07-31T03:02:33Z",
+          "updatedAt": "2024-07-31T03:02:33Z"
+        },
+        {
+          "author": "kazuho",
+          "authorAssociation": "OWNER",
+          "body": "FWIW my point has been that a client or a server cannot tell if an intermediary is buffering in either direction, unless they try to use HTTP request-response as a bi-directional channel.\r\n\r\nBut I can see some might argue otherwise if they take out-of-band knowledge into consideration.\r\n\r\nTo that end, I do not have a strong reason to object against the idea of changing the header field to indicate how the HTTP message is delivered in each direction.",
+          "createdAt": "2024-07-31T05:18:38Z",
+          "updatedAt": "2024-07-31T05:18:38Z"
         }
       ]
     }
