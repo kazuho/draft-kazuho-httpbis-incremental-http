@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-04T00:19:49.328149+00:00",
+  "timestamp": "2024-08-06T00:18:21.490946+00:00",
   "repo": "kazuho/draft-kazuho-httpbis-streaming-requests",
   "labels": [
     {
@@ -86,7 +86,7 @@
       "labels": [],
       "body": "A name of \"request-streaming\" implies that this only applies to requests.  That's not really necessary.  I think that it would be helpful to have this be more general.  This can be a per-message basis.\r\n\r\nI would suggest \"Stream-Body\" or \"Incr[emental]-Delivery\" or even just \"Incremental\".  This is a signal from the sender of that message to any intermediary that incremental delivery of this message would be optimal.  Importantly, a request can't speak about a response.",
       "createdAt": "2024-07-23T20:26:44Z",
-      "updatedAt": "2024-07-31T05:18:39Z",
+      "updatedAt": "2024-08-05T23:15:47Z",
       "closedAt": null,
       "comments": [
         {
@@ -116,6 +116,20 @@
           "body": "FWIW my point has been that a client or a server cannot tell if an intermediary is buffering in either direction, unless they try to use HTTP request-response as a bi-directional channel.\r\n\r\nBut I can see some might argue otherwise if they take out-of-band knowledge into consideration.\r\n\r\nTo that end, I do not have a strong reason to object against the idea of changing the header field to indicate how the HTTP message is delivered in each direction.",
           "createdAt": "2024-07-31T05:18:38Z",
           "updatedAt": "2024-07-31T05:18:38Z"
+        },
+        {
+          "author": "martinthomson",
+          "authorAssociation": "NONE",
+          "body": "Thanks @kazuho.  The only question I have then is whether it is useful for the client to be able to signal as part of a request whether it wants the response to be streamed.\r\n\r\nI suspect that the answer there is that the server will know that a response should be streamed and mark the response properly.  I'm trying to think of cases where that wouldn't be true and not finding any.",
+          "createdAt": "2024-08-05T01:26:43Z",
+          "updatedAt": "2024-08-05T01:26:43Z"
+        },
+        {
+          "author": "kazuho",
+          "authorAssociation": "OWNER",
+          "body": "@martinthomson \r\n> The only question I have then is whether it is useful for the client to be able to signal as part of a request whether it wants the response to be streamed.\r\n> \r\n> I suspect that the answer there is that the server will know that a response should be streamed and mark the response properly. I'm trying to think of cases where that wouldn't be true and not finding any.\r\n\r\n+1 to _not_ giving client also control. \r\n\r\nFWIW, in case of newly written applications, server developers would have the opportunity to set the flag. In contrast, having such a feature would be helpful to existing applications that need bi-directional streaming, as one would need to change only one side.\r\n\r\nSome people might argue (or presume) that such a flag would be useful for clients that can process the response incrementally. Consider a MP3 player. It would always be helpful for them to receive response incrementally, as the playback can start earlier.\r\n\r\nBut the fact is that we do not want to start such a arms race, where everybody starts setting the flag, as then, proxies become unable to respect the flag.\r\n\r\nTo conclude, I think we should be clear that the flag is specifically for protocols that break if the intermediaries buffer the HTTP message. That flag changes the policy of intermediaries from \"forward-now-or-buffer\" to  \"forward-now-or-fail\" (though I'm not sure how intermediaries can fail if they see the flag attached to the response).",
+          "createdAt": "2024-08-05T23:15:46Z",
+          "updatedAt": "2024-08-05T23:15:46Z"
         }
       ]
     }
