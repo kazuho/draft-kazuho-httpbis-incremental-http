@@ -1188,7 +1188,7 @@ deployed to buffer complete HTTP messages before forwarding them downstream
 <p id="section-1-6">If such a buffering HTTP intermediary exists between the client and the server,
 these applications may fail to function as intended.<a href="#section-1-6" class="pilcrow">¶</a></p>
 <p id="section-1-7">In the case of Server-Sent Events, when an intermediary tries to buffer the HTTP
-response completely before forwarding it, the client can time out before
+response completely before forwarding it, the client might time out before
 receiving any portion of the HTTP response.<a href="#section-1-7" class="pilcrow">¶</a></p>
 <p id="section-1-8">In the case of Chunked Oblivious HTTP Messages, when an intermediary tries to
 buffer the entire HTTP request, the client will not start receiving application

@@ -102,7 +102,7 @@ Table of Contents
 
    In the case of Server-Sent Events, when an intermediary tries to
    buffer the HTTP response completely before forwarding it, the client
-   can time out before receiving any portion of the HTTP response.
+   might time out before receiving any portion of the HTTP response.
 
    In the case of Chunked Oblivious HTTP Messages, when an intermediary
    tries to buffer the entire HTTP request, the client will not start
