@@ -8,9 +8,11 @@ keyword: internet-draft
 stand_alone: yes
 pi: [toc, sortrefs, symrefs]
 author:
--
-    fullname: Kazuho Oku
-    organization: Fastly
+ -
+    fullname:
+      :: 奥 一穂
+      ascii: Kazuho Oku
+    org: Fastly
     email: kazuhooku@gmail.com
 
 normative:
