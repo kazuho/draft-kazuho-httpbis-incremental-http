@@ -17,6 +17,13 @@ normative:
 
 informative:
   PROXY-STATUS: RFC9209
+  SSE:
+    target: https://html.spec.whatwg.org/multipage/server-sent-events.html
+    title: Server-Sent Events
+    author:
+     -
+        org: WHATWG
+
 
 
 --- abstract
@@ -36,7 +43,7 @@ message to be received before acting.
 Some applications are specifically designed to take advantage of this
 capability.
 
-For example, Server-Sent Events (SSE) uses a long-running HTTP response, where
+For example, Server-Sent Events {{SSE}} uses a long-running HTTP response, where
 the server continually sends notifications as they become available.
 
 In the case of Chunked Oblivious HTTP Messages
