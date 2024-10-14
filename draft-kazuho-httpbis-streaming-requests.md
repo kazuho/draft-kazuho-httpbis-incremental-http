@@ -62,7 +62,7 @@ If such a buffering HTTP intermediary exists between the client and the server,
 these applications may fail to function as intended.
 
 In the case of Server-Sent Events, when an intermediary tries to buffer the HTTP
-response completely before forwarding it, the client can time out before
+response completely before forwarding it, the client might time out before
 receiving any portion of the HTTP response.
 
 In the case of Chunked Oblivious HTTP Messages, when an intermediary tries to
