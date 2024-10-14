@@ -1194,7 +1194,7 @@ receiving any portion of the HTTP response.<a href="#section-1-7" class="pilcrow
 buffer the entire HTTP request, the client will not start receiving application
 messages from the server until the client closes the request, effectively
 disrupting the intended incremental processing of the request.<a href="#section-1-8" class="pilcrow">¶</a></p>
-<p id="section-1-9">To prevent such deadlocks, this document specifies the "Incremental" HTTP header
+<p id="section-1-9">To prevent such behavior, this document specifies the "Incremental" HTTP header
 field, which instructs HTTP intermediaries to begin forwarding the HTTP message
 downstream before receiving the complete message.<a href="#section-1-9" class="pilcrow">¶</a></p>
 </section>
