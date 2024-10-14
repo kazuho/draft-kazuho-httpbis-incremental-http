@@ -68,7 +68,7 @@ receiving any portion of the HTTP response.
 In the case of Chunked Oblivious HTTP Messages, when an intermediary tries to
 buffer the entire HTTP request, the client will not start receiving application
 messages from the server until the client closes the request, effectively
-disrupting the intended bi-directional communication.
+disrupting the intended incremental processing of the request.
 
 To prevent such deadlocks, this document specifies the "Incremental" HTTP header
 field, which instructs HTTP intermediaries to begin forwarding the HTTP message
