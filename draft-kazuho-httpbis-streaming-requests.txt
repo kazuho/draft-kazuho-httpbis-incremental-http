@@ -2,10 +2,10 @@
 
 
 
-httpbis                                                           K. Oku
+httpbis                                                 奥 一穂 (K. Oku)
 Internet-Draft                                                    Fastly
-Intended status: Standards Track                            29 July 2024
-Expires: 30 January 2025
+Intended status: Standards Track                         14 October 2024
+Expires: 17 April 2025
 
 
                        Streaming Requests on HTTP
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 January 2025.
+   This Internet-Draft will expire on 17 April 2025.
 
 Copyright Notice
 
@@ -216,3 +216,8 @@ Author's Address
    Kazuho Oku
    Fastly
    Email: kazuhooku@gmail.com
+
+   Additional contact information:
+
+      奥 一穂
+      Fastly

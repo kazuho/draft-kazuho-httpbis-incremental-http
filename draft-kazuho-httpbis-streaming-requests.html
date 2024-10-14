@@ -5,28 +5,28 @@
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
 <title>Streaming Requests on HTTP</title>
-<meta content="Kazuho Oku" name="author">
+<meta content="奥 一穂 (Kazuho Oku)" name="author">
 <meta content='
        This document specifies the "Request-Streaming" HTTP request header field, which
 instructs HTTP intermediaries to begin forwarding the request and the
 corresponding response before the HTTP message body is received completely. 
     ' name="description">
-<meta content="xml2rfc 3.22.0" name="generator">
+<meta content="xml2rfc 3.23.2" name="generator">
 <meta content="internet-draft" name="keyword">
 <meta content="draft-kazuho-httpbis-streaming-requests-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.22.0
-    Python 3.12.3
+  xml2rfc 3.23.2
+    Python 3.12.7
     ConfigArgParse 1.7
-    google-i18n-address 3.1.0
+    google-i18n-address 3.1.1
     intervaltree 3.1.0
     Jinja2 3.1.4
     lxml 4.9.4
-    platformdirs 4.2.2
+    platformdirs 4.3.6
     pycountry 22.3.5
     PyYAML 6.0.1
     requests 2.32.3
-    setuptools 69.5.1
+    setuptools 70.3.0
     wcwidth 0.2.13
 -->
 <link href="draft-kazuho-httpbis-streaming-requests.xml" rel="alternate" type="application/rfc+xml">
@@ -1026,11 +1026,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Streaming Requests on HTTP</td>
-<td class="right">July 2024</td>
+<td class="right">October 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Oku</td>
-<td class="center">Expires 30 January 2025</td>
+<td class="center">Expires 17 April 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1043,16 +1043,17 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-kazuho-httpbis-streaming-requests-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-07-29" class="published">29 July 2024</time>
+<time datetime="2024-10-14" class="published">14 October 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-01-30">30 January 2025</time></dd>
+<dd class="expires"><time datetime="2025-04-17">17 April 2025</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
-      <div class="author-name">K. Oku</div>
+      <div class="author-name">
+<span class="non-ascii">奥 一穂</span> (<span class="ascii">K. Oku</span>)</div>
 <div class="org">Fastly</div>
 </div>
 </dd>
@@ -1095,7 +1096,7 @@ corresponding response before the HTTP message body is received completely.<a hr
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 30 January 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 17 April 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1344,11 +1345,18 @@ sender.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
 <a href="#name-authors-address" class="section-name selfRef">Author's Address</a>
       </h2>
 <address class="vcard">
-        <div dir="auto" class="left"><span class="fn nameRole">Kazuho Oku</span></div>
+        <div class="ascii">
+<div dir="auto" class="left"><span class="fn nameRole">Kazuho Oku</span></div>
 <div dir="auto" class="left"><span class="org">Fastly</span></div>
 <div class="email">
 <span>Email:</span>
 <a href="mailto:kazuhooku@gmail.com" class="email">kazuhooku@gmail.com</a>
+</div>
+</div>
+<div class="alternative-contact">Additional contact information:</div>
+<div class="non-ascii">
+<div dir="auto" class="left"><span class="fn nameRole">奥 一穂</span></div>
+<div dir="auto" class="left"><span class="org">Fastly</span></div>
 </div>
 </address>
 </section>
