@@ -1173,7 +1173,7 @@ messages as they arrive, rather than requiring them to wait for the entire HTTP
 message to be received before acting.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">Some applications are specifically designed to take advantage of this
 capability.<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">For example, Server-Sent Events (SSE) uses a long-running HTTP response, where
+<p id="section-1-3">For example, Server-Sent Events <span>[<a href="#SSE" class="cite xref">SSE</a>]</span> uses a long-running HTTP response, where
 the server continually sends notifications as they become available.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">In the case of Chunked Oblivious HTTP Messages
 <span>[<a href="#CHUNKED-OHTTP" class="cite xref">CHUNKED-OHTTP</a>]</span>, the client opens an HTTP request
@@ -1311,8 +1311,12 @@ by a connection_limit_reached Proxy-Status response header field
 <span class="refAuthor">Pauly, T.</span> and <span class="refAuthor">M. Thomson</span>, <span class="refTitle">"Chunked Oblivious HTTP Messages"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ohai-chunked-ohttp-01</span>, <time datetime="2024-07-08" class="refDate">8 July 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ohai-chunked-ohttp-01">https://datatracker.ietf.org/doc/html/draft-ietf-ohai-chunked-ohttp-01</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="PROXY-STATUS">[PROXY-STATUS]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Nottingham, M.</span> and <span class="refAuthor">P. Sikora</span>, <span class="refTitle">"The Proxy-Status HTTP Response Header Field"</span>, <span class="seriesInfo">RFC 9209</span>, <span class="seriesInfo">DOI 10.17487/RFC9209</span>, <time datetime="2022-06" class="refDate">June 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9209">https://www.rfc-editor.org/rfc/rfc9209</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="SSE">[SSE]</dt>
+      <dd>
+<span class="refAuthor">WHATWG</span>, <span class="refTitle">"Server-Sent Events"</span>, <span>n.d.</span>, <span>&lt;<a href="https://html.spec.whatwg.org/multipage/server-sent-events.html">https://html.spec.whatwg.org/multipage/server-sent-events.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>

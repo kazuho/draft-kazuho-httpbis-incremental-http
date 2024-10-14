@@ -82,7 +82,7 @@ Table of Contents
    Some applications are specifically designed to take advantage of this
    capability.
 
-   For example, Server-Sent Events (SSE) uses a long-running HTTP
+   For example, Server-Sent Events [SSE] uses a long-running HTTP
    response, where the server continually sends notifications as they
    become available.
 
@@ -207,6 +207,10 @@ Table of Contents
               Nottingham, M. and P. Sikora, "The Proxy-Status HTTP
               Response Header Field", RFC 9209, DOI 10.17487/RFC9209,
               June 2022, <https://www.rfc-editor.org/rfc/rfc9209>.
+
+   [SSE]      WHATWG, "Server-Sent Events", n.d.,
+              <https://html.spec.whatwg.org/multipage/server-sent-
+              events.html>.
 
 Acknowledgments
 
