@@ -12,7 +12,7 @@ Expires: 18 April 2025                                             Apple
 
 
                        Incremental HTTP Messages
-             draft-kazuho-httpbis-streaming-requests-latest
+              draft-kazuho-httpbis-incremental-http-latest
 
 Abstract
 
@@ -29,7 +29,7 @@ Discussion Venues
    https://lists.w3.org/Archives/Public/ietf-http-wg/.
 
    Source for this draft and an issue tracker can be found at
-   https://github.com/kazuho/draft-kazuho-httpbis-streaming-requests.
+   https://github.com/kazuho/draft-kazuho-httpbis-incremental-http.
 
 Status of This Memo
 
