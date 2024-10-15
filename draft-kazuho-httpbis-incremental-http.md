@@ -1,6 +1,6 @@
 ---
 title: "Incremental HTTP Messages"
-docname: draft-kazuho-httpbis-streaming-requests-latest
+docname: draft-kazuho-httpbis-incremental-http-latest
 category: std
 wg: httpbis
 ipr: trust200902
