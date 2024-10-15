@@ -4,8 +4,11 @@
 
 httpbis                                                 奥 一穂 (K. Oku)
 Internet-Draft                                                    Fastly
-Intended status: Standards Track                         15 October 2024
-Expires: 18 April 2025
+Intended status: Standards Track                                T. Pauly
+Expires: 18 April 2025                                             Apple
+                                                              M. Thomson
+                                                                 Mozilla
+                                                         15 October 2024
 
 
                        Incremental HTTP Messages
@@ -71,7 +74,7 @@ Table of Contents
      6.1.  Normative References
      6.2.  Informative References
    Acknowledgments
-   Author's Address
+   Authors' Addresses
 
 1.  Introduction
 
@@ -223,7 +226,7 @@ Acknowledgments
 
    TODO acknowledge.
 
-Author's Address
+Authors' Addresses
 
    Kazuho Oku
    Fastly
@@ -233,3 +236,13 @@ Author's Address
 
       奥 一穂
       Fastly
+
+
+   Tommy Pauly
+   Apple
+   Email: tpauly@apple.com
+
+
+   Martin Thomson
+   Mozilla
+   Email: mt@lowentropy.net
