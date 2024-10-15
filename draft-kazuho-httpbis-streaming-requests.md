@@ -48,7 +48,7 @@ the server continually sends notifications as they become available.
 
 In the case of Chunked Oblivious HTTP Messages
 {{?CHUNKED-OHTTP=I-D.ietf-ohai-chunked-ohttp}}, the client opens an HTTP request
-and incrementally sends application messages, while the server begins responding
+and incrementally sends application messages, while the server can start responding
 even before the HTTP request is fully complete. In this way, the HTTP
 request-response pair effectively serves as a bi-directional communication
 channel.
