@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-13T00:22:19.264517+00:00",
+  "timestamp": "2024-10-15T00:20:48.583863+00:00",
   "repo": "kazuho/draft-kazuho-httpbis-streaming-requests",
   "labels": [
     {
@@ -57,7 +57,7 @@
       "url": "https://github.com/kazuho/draft-kazuho-httpbis-streaming-requests/issues/1",
       "state": "CLOSED",
       "author": "martinthomson",
-      "authorAssociation": "NONE",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "This changes this to `?1` from `1`.  It might make things neater.",
@@ -79,19 +79,19 @@
       "id": "I_kwDOMZBL0M6Qmt3p",
       "title": "Field name ... or maybe just semantics too",
       "url": "https://github.com/kazuho/draft-kazuho-httpbis-streaming-requests/issues/2",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "martinthomson",
-      "authorAssociation": "NONE",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "A name of \"request-streaming\" implies that this only applies to requests.  That's not really necessary.  I think that it would be helpful to have this be more general.  This can be a per-message basis.\r\n\r\nI would suggest \"Stream-Body\" or \"Incr[emental]-Delivery\" or even just \"Incremental\".  This is a signal from the sender of that message to any intermediary that incremental delivery of this message would be optimal.  Importantly, a request can't speak about a response.",
       "createdAt": "2024-07-23T20:26:44Z",
-      "updatedAt": "2024-08-05T23:15:47Z",
-      "closedAt": null,
+      "updatedAt": "2024-10-15T00:19:40Z",
+      "closedAt": "2024-10-15T00:19:40Z",
       "comments": [
         {
           "author": "martinthomson",
-          "authorAssociation": "NONE",
+          "authorAssociation": "COLLABORATOR",
           "body": "Or \"Incr[emental]-Forwarding\" or \"Forward-Incr\" so that it is about *forwarding* expectations.",
           "createdAt": "2024-07-23T20:28:26Z",
           "updatedAt": "2024-07-23T20:28:26Z"
@@ -105,7 +105,7 @@
         },
         {
           "author": "martinthomson",
-          "authorAssociation": "NONE",
+          "authorAssociation": "COLLABORATOR",
           "body": "So I don't think that bidirectional is the important property.  After all, if the request is buffered and the response is not, you don't have full duplex (or bidirectional) communication.  That is something you might get with [server sent events](https://html.spec.whatwg.org/multipage/server-sent-events.html), which this would make far more reliable overall (if intermediaries supported the signaling, that is, independent of any preexisting arrangements that have been setup, which I know is common for existing uses of SSE).\r\n\r\nThe key property is that data is forwarded as it arrives at an intermediary, not buffered.  `Unbuffered` might be a negative framing of this that works (even if I don't ordinarily like using negative names).\r\n\r\nThe fact that two unbuffered messages can be assembled to form voltron^wa bidirectional protocol is interesting, but not an essential property.\r\n\r\nI also don't think that you can assume that an unbuffered request naturally leads to an unbuffered response.  It could in a great many cases (100-continue is a good example of that, especially with OHTTP).  But not all.  Incremental processing is often valuable for large bodies, such that buffering is a performance hazard.\r\n\r\nSo, for me at least, bidirectional communication should feature prominently in the rationale, but it should not be how the feature is defined.  It should just be a consequence of one of the ways that the feature is used.",
           "createdAt": "2024-07-31T03:02:33Z",
           "updatedAt": "2024-07-31T03:02:33Z"
@@ -119,7 +119,7 @@
         },
         {
           "author": "martinthomson",
-          "authorAssociation": "NONE",
+          "authorAssociation": "COLLABORATOR",
           "body": "Thanks @kazuho.  The only question I have then is whether it is useful for the client to be able to signal as part of a request whether it wants the response to be streamed.\r\n\r\nI suspect that the answer there is that the server will know that a response should be streamed and mark the response properly.  I'm trying to think of cases where that wouldn't be true and not finding any.",
           "createdAt": "2024-08-05T01:26:43Z",
           "updatedAt": "2024-08-05T01:26:43Z"
@@ -130,6 +130,13 @@
           "body": "@martinthomson \r\n> The only question I have then is whether it is useful for the client to be able to signal as part of a request whether it wants the response to be streamed.\r\n> \r\n> I suspect that the answer there is that the server will know that a response should be streamed and mark the response properly. I'm trying to think of cases where that wouldn't be true and not finding any.\r\n\r\n+1 to _not_ giving client also control. \r\n\r\nFWIW, in case of newly written applications, server developers would have the opportunity to set the flag. In contrast, having such a feature would be helpful to existing applications that need bi-directional streaming, as one would need to change only one side.\r\n\r\nSome people might argue (or presume) that such a flag would be useful for clients that can process the response incrementally. Consider a MP3 player. It would always be helpful for them to receive response incrementally, as the playback can start earlier.\r\n\r\nBut the fact is that we do not want to start such a arms race, where everybody starts setting the flag, as then, proxies become unable to respect the flag.\r\n\r\nTo conclude, I think we should be clear that the flag is specifically for protocols that break if the intermediaries buffer the HTTP message. That flag changes the policy of intermediaries from \"forward-now-or-buffer\" to  \"forward-now-or-fail\" (though I'm not sure how intermediaries can fail if they see the flag attached to the response).",
           "createdAt": "2024-08-05T23:15:46Z",
           "updatedAt": "2024-08-05T23:15:46Z"
+        },
+        {
+          "author": "kazuho",
+          "authorAssociation": "OWNER",
+          "body": "@martinthomson Sorry for not making progress. I've filed #4, PTAL.",
+          "createdAt": "2024-10-14T14:18:43Z",
+          "updatedAt": "2024-10-14T14:18:43Z"
         }
       ]
     }
@@ -162,6 +169,193 @@
       },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 4,
+      "id": "PR_kwDOMZBL0M5-jU58",
+      "title": "change to unidirectional signal called \"Incremental\"",
+      "url": "https://github.com/kazuho/draft-kazuho-httpbis-streaming-requests/pull/4",
+      "state": "MERGED",
+      "author": "kazuho",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "As discussed in #2, the header field now applies to the HTTP message to which it is attached. Also, the name is changed to Incremental.\r\n\r\nCloses #2.",
+      "createdAt": "2024-10-14T14:17:11Z",
+      "updatedAt": "2024-10-15T00:19:39Z",
+      "baseRepository": "kazuho/draft-kazuho-httpbis-streaming-requests",
+      "baseRefName": "main",
+      "baseRefOid": "af2ae1b20ffd8ed9db1f0d3f50da57efacc9ec31",
+      "headRepository": "kazuho/draft-kazuho-httpbis-streaming-requests",
+      "headRefName": "kazuho/unidirectional",
+      "headRefOid": "8bb722b88bf2dc05d7a56b0355275ed616e8751a",
+      "closedAt": "2024-10-15T00:19:39Z",
+      "mergedAt": "2024-10-15T00:19:39Z",
+      "mergedBy": "kazuho",
+      "mergeCommit": {
+        "oid": "a92d951b55c20913a125f674bdb34022b459aa83"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOMZBL0M6NGIvp",
+          "commit": {
+            "abbreviatedOid": "0ec5833"
+          },
+          "author": "tfpauly",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-10-14T16:58:40Z",
+          "updatedAt": "2024-10-14T16:59:37Z",
+          "comments": [
+            {
+              "originalPosition": 87,
+              "body": "Doesn't necessarily need to be bi-directional...\r\n```suggestion\r\ndisrupting the intended incremental processing of the request.\r\n```",
+              "createdAt": "2024-10-14T16:58:40Z",
+              "updatedAt": "2024-10-14T16:59:37Z"
+            },
+            {
+              "originalPosition": 89,
+              "body": "```suggestion\r\nTo prevent such behavior, this document specifies the \"Incremental\" HTTP header\r\n```",
+              "createdAt": "2024-10-14T16:58:53Z",
+              "updatedAt": "2024-10-14T16:59:37Z"
+            },
+            {
+              "originalPosition": 81,
+              "body": "```suggestion\r\nresponse completely before forwarding it, the client might time out before\r\n```",
+              "createdAt": "2024-10-14T16:59:03Z",
+              "updatedAt": "2024-10-14T16:59:37Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMZBL0M6NIe3Z",
+          "commit": {
+            "abbreviatedOid": "b4e224b"
+          },
+          "author": "tfpauly",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-10-14T23:25:50Z",
+          "updatedAt": "2024-10-14T23:25:50Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOMZBL0M6NIdHX",
+          "commit": {
+            "abbreviatedOid": "b4e224b"
+          },
+          "author": "martinthomson",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-10-14T23:21:47Z",
+          "updatedAt": "2024-10-14T23:28:51Z",
+          "comments": [
+            {
+              "originalPosition": 56,
+              "body": "```suggestion\r\nand incrementally sends application messages, while the server can start responding\r\n```",
+              "createdAt": "2024-10-14T23:21:47Z",
+              "updatedAt": "2024-10-14T23:28:51Z"
+            },
+            {
+              "originalPosition": 89,
+              "body": "```suggestion\r\nTo help avoid such behavior, this document specifies the \"Incremental\" HTTP header\r\n```",
+              "createdAt": "2024-10-14T23:22:38Z",
+              "updatedAt": "2024-10-14T23:28:51Z"
+            },
+            {
+              "originalPosition": 144,
+              "body": "```suggestion\r\nSuch intermediaries could apply a more restrictive concurrency limit to requests\r\n```",
+              "createdAt": "2024-10-14T23:23:26Z",
+              "updatedAt": "2024-10-14T23:28:51Z"
+            },
+            {
+              "originalPosition": 132,
+              "body": "```suggestion\r\n\r\nThe Incremental field is advisory. Intermediaries that are unaware of the field\r\nor that do not support the field might buffer messages, even when explicitly\r\nrequested otherwise.  Clients and servers therefore cannot expect all\r\nintermediaries to understand and respect a request to deliver messages\r\nincrementally. Clients can rely on prior knowledge or probe for support on\r\nindividual resources.\r\n```\r\n\r\n(Happy to take that to a separate change; it's not exactly simple.)",
+              "createdAt": "2024-10-14T23:28:21Z",
+              "updatedAt": "2024-10-14T23:28:51Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMZBL0M6NIuyM",
+          "commit": {
+            "abbreviatedOid": "c690700"
+          },
+          "author": "kazuho",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-10-15T00:18:27Z",
+          "updatedAt": "2024-10-15T00:18:28Z",
+          "comments": [
+            {
+              "originalPosition": 132,
+              "body": "Let's get this in. As you say we might want to discuss, I think it is a fact that the signal is only advisory; it makes sense to point that out.",
+              "createdAt": "2024-10-15T00:18:27Z",
+              "updatedAt": "2024-10-15T00:18:28Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "PR_kwDOMZBL0M5-jeo4",
+      "title": "add coauthors",
+      "url": "https://github.com/kazuho/draft-kazuho-httpbis-streaming-requests/pull/5",
+      "state": "MERGED",
+      "author": "kazuho",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "@tfpauly @martinthomson PTAL.",
+      "createdAt": "2024-10-14T14:35:04Z",
+      "updatedAt": "2024-10-15T00:19:50Z",
+      "baseRepository": "kazuho/draft-kazuho-httpbis-streaming-requests",
+      "baseRefName": "main",
+      "baseRefOid": "bf3fd24f8e7df55059d0c9349ff318d0cb3d3db8",
+      "headRepository": "kazuho/draft-kazuho-httpbis-streaming-requests",
+      "headRefName": "kazuho/add-authors",
+      "headRefOid": "90ea5941740fc707d25b2f01a610c4f6b8545446",
+      "closedAt": "2024-10-15T00:19:50Z",
+      "mergedAt": "2024-10-15T00:19:50Z",
+      "mergedBy": "kazuho",
+      "mergeCommit": {
+        "oid": "704a44a99f7ee5a32942de73d836feb9b50d5492"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOMZBL0M6NEydI",
+          "commit": {
+            "abbreviatedOid": "90ea594"
+          },
+          "author": "tfpauly",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-10-14T14:35:53Z",
+          "updatedAt": "2024-10-14T14:35:53Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOMZBL0M6NIc7o",
+          "commit": {
+            "abbreviatedOid": "90ea594"
+          },
+          "author": "martinthomson",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-10-14T23:20:31Z",
+          "updatedAt": "2024-10-14T23:20:31Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
