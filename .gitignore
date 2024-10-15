@@ -17,7 +17,7 @@
 /versioned/
 Gemfile.lock
 archive.json
-draft-kazuho-httpbis-streaming-requests.xml
+draft-kazuho-httpbis-incremental-http.xml
 package-lock.json
 report.xml
 !requirements.txt
