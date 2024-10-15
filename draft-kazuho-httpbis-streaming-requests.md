@@ -114,7 +114,7 @@ common for intermediaries to impose limits on the maximum number of concurrent
 HTTP requests that they forward, while buffering requests that exceed this
 limit.
 
-Such intermediaries may apply a more restrictive concurrency limit to requests
+Such intermediaries could apply a more restrictive concurrency limit to requests
 marked as incremental to ensure that capacity remains available for
 non-incremental requests, even when the maximum number of incremental requests
 is reached. This approach helps balance the processing of different types of
