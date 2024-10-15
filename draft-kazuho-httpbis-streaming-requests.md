@@ -104,6 +104,12 @@ both the HTTP request and response need to be forwarded incrementally, the
 Incremental HTTP header field MUST be set for both the HTTP request and the
 response.
 
+The Incremental field is advisory. Intermediaries that are unaware of the field
+or that do not support the field might buffer messages, even when explicitly
+requested otherwise.  Clients and servers therefore cannot expect all
+intermediaries to understand and respect a request to deliver messages
+incrementally. Clients can rely on prior knowledge or probe for support on
+individual resources.
 
 # Security Considerations
 
