@@ -4,8 +4,8 @@
 
 httpbis                                                           K. Oku
 Internet-Draft                                                    Fastly
-Intended status: Standards Track                         14 October 2024
-Expires: 17 April 2025
+Intended status: Standards Track                         15 October 2024
+Expires: 18 April 2025
 
 
                        Incremental HTTP Messages
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 April 2025.
+   This Internet-Draft will expire on 18 April 2025.
 
 Copyright Notice
 
@@ -88,7 +88,7 @@ Table of Contents
 
    In the case of Chunked Oblivious HTTP Messages [CHUNKED-OHTTP], the
    client opens an HTTP request and incrementally sends application
-   messages, while the server begins responding even before the HTTP
+   messages, while the server can start responding even before the HTTP
    request is fully complete.  In this way, the HTTP request-response
    pair effectively serves as a bi-directional communication channel.
 
@@ -110,10 +110,10 @@ Table of Contents
    closes the request, effectively disrupting the intended incremental
    processing of the request.
 
-   To prevent such behavior, this document specifies the "Incremental"
-   HTTP header field, which instructs HTTP intermediaries to begin
-   forwarding the HTTP message downstream before receiving the complete
-   message.
+   To help avoid such behavior, this document specifies the
+   "Incremental" HTTP header field, which instructs HTTP intermediaries
+   to begin forwarding the HTTP message downstream before receiving the
+   complete message.
 
 2.  Conventions and Definitions
 
