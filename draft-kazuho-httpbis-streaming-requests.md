@@ -14,6 +14,14 @@ author:
       ascii: Kazuho Oku
     org: Fastly
     email: kazuhooku@gmail.com
+ -
+    fullname: Tommy Pauly
+    organization: Apple
+    email: tpauly@apple.com
+ -
+    fullname: Martin Thomson
+    organization: Mozilla
+    email: mt@lowentropy.net
 
 normative:
 
