@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-22T00:20:53.664936+00:00",
+  "timestamp": "2024-10-24T00:20:38.875396+00:00",
   "repo": "kazuho/draft-kazuho-httpbis-incremental-http",
   "labels": [
     {
@@ -139,6 +139,22 @@
           "updatedAt": "2024-10-14T14:18:43Z"
         }
       ]
+    },
+    {
+      "number": 7,
+      "id": "I_kwDOMZBL0M6bSMOR",
+      "title": "Allow for `Incremental: ?0`",
+      "url": "https://github.com/kazuho/draft-kazuho-httpbis-incremental-http/issues/7",
+      "state": "OPEN",
+      "author": "thibmeu",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "In its current state, the draft only allows one value: `?1`. This means there are two states:\r\n* No header, and the server uses its default\r\n* `Incremental: ?1` and the server allows incremental request/response\r\n\r\nI think the state `Incremental: ?0` should be mentioned, and allowed. For instance, OHTTP has privacy concerns with incremental/chunked response. These concerns go away when the request and responses are buffered. Client should be able to inform the server they would like to use this mode.\r\n\r\nSimilar to `Incremental: ?1`, the server could perfectly ignore this header, or return they don't support it.",
+      "createdAt": "2024-10-22T11:55:16Z",
+      "updatedAt": "2024-10-22T11:55:16Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
