@@ -1,6 +1,6 @@
-# Streaming Requests on HTTP
+# Incremental HTTP Messages
 
-This is the working area for the individual Internet-Draft, "Streaming Requests on HTTP".
+This is the working area for the individual Internet-Draft, "Incremental HTTP Messages".
 
 * [Editor's Copy](https://kazuho.github.io/draft-kazuho-httpbis-incremental-http/#go.draft-kazuho-httpbis-incremental-http.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-kazuho-httpbis-incremental-http)
