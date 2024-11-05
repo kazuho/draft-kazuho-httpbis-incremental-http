@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-11-03T00:22:46.701243+00:00",
+  "timestamp": "2024-11-05T00:20:34.407425+00:00",
   "repo": "kazuho/draft-kazuho-httpbis-incremental-http",
   "labels": [
     {
@@ -152,7 +152,7 @@
       "labels": [],
       "body": "In its current state, the draft only allows one value: `?1`. This means there are two states:\r\n* No header, and the server uses its default\r\n* `Incremental: ?1` and the server allows incremental request/response\r\n\r\nI think the state `Incremental: ?0` should be mentioned, and allowed. For instance, OHTTP has privacy concerns with incremental/chunked response. These concerns go away when the request and responses are buffered. Client should be able to inform the server they would like to use this mode.\r\n\r\nSimilar to `Incremental: ?1`, the server could perfectly ignore this header, or return they don't support it.",
       "createdAt": "2024-10-22T11:55:16Z",
-      "updatedAt": "2024-11-01T20:59:58Z",
+      "updatedAt": "2024-11-03T12:21:47Z",
       "closedAt": null,
       "comments": [
         {
@@ -161,6 +161,13 @@
           "body": "Thank you for raising the point.\r\n\r\nI do not understand the security aspects of OHTTP and I could be wrong, but could you clarify why it is preferable to have a network signal rather than relying on local decision (i.e., server itself can wait for the entire request, then send the entire response at once)?",
           "createdAt": "2024-11-01T20:59:56Z",
           "updatedAt": "2024-11-01T20:59:56Z"
+        },
+        {
+          "author": "thibmeu",
+          "authorAssociation": "NONE",
+          "body": "Incremental being broader than OHTTP, there could be other use cases that require buffering down the line.\r\n\r\nFor your question on OHTTP specifically, my understanding is as follow:\r\n\r\nOHTTP [initial figure](https://www.rfc-editor.org/rfc/rfc9458#section-2-4.1.1) highlights the relay sends the request to the gateway, and waits for its response before replying to the client.\r\n[RFC 9458 Section 6.2.3](https://www.rfc-editor.org/rfc/rfc9458#name-traffic-analysis) discusses how an attacker can do traffic analysis. One mitigation is for Relay to add delay.\r\n\r\nFor chunked OHTTP, this would also include buffering client request/gateway response. By buffering the entire request before sending the entire response, the relay prevents an attacker from being able to fingerprint a client by granularily sending packets (time, size, others).\r\nThis interactivity privacy consideration is highlighted in the [draft for chunked OHTTP](\r\nhttps://datatracker.ietf.org/doc/html/draft-ietf-ohai-chunked-ohttp-02#name-interactivity-and-privacy).\r\n",
+          "createdAt": "2024-11-03T12:21:45Z",
+          "updatedAt": "2024-11-03T12:21:45Z"
         }
       ]
     },
@@ -219,6 +226,38 @@
           "updatedAt": "2024-11-02T12:26:49Z"
         }
       ]
+    },
+    {
+      "number": 11,
+      "id": "I_kwDOMZBL0M6c5v6K",
+      "title": "Tri-state",
+      "url": "https://github.com/kazuho/draft-kazuho-httpbis-incremental-http/issues/11",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Ted Hardie suggested that we might have three states:\r\n\r\n1. Incremental is necessary\r\n2. Incremental is preferred, but not essential\r\n3. Incremental is not necessary\r\n\r\nThis seems like a better way than #7 and more general overall.\r\n\r\nI suggest a/p/n for always/preferred/not preferred.",
+      "createdAt": "2024-11-04T10:12:05Z",
+      "updatedAt": "2024-11-04T10:12:05Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 12,
+      "id": "I_kwDOMZBL0M6c50Uz",
+      "title": "Requests indicating preferences about responses",
+      "url": "https://github.com/kazuho/draft-kazuho-httpbis-incremental-http/issues/12",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Discussion in the session highlighted that there is potentially value in having clients signal to servers that they might prefer an incrementally-delivered response.  We might frame that as `Prefer: incremental`, to complement the forward-direction `Incremental: ??` signal.",
+      "createdAt": "2024-11-04T10:20:37Z",
+      "updatedAt": "2024-11-04T10:20:37Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
